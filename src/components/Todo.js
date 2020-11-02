@@ -9,7 +9,7 @@ export default class Todo extends Component {
         super()
         this.state={
             todo: "",
-            task: [],
+            task: ["todo1", "todo2", "todo3"],
             completeTask: []
         }
     }
@@ -79,10 +79,10 @@ export default class Todo extends Component {
     }
     render() {
         const todoJSX = this.state.task.map((todo, index)=>{
-        return <div className="row" key={index}><p className="col-8 text-left">{index+1}: {todo}</p><button className="col-2 remove-btn" onClick={this.done}>Done</button>  <button className="col-2 remove-btn" onClick={this.remove}>remove</button></div>
+        return <div className="row" key={index}><p className="col-6 text-left">{index+1}: {todo}</p><button className="col-3 remove-btn" onClick={this.done}>Done</button>  <button className="col-3 remove-btn" onClick={this.remove}>remove</button></div>
         })
         const completeJSX = this.state.completeTask.map((todo, index)=>{
-            return <div className="row" key={index}><p className="col-7 text-left done">{index+1}: {todo}</p><button className="col-2 remove-btn" onClick={this.notDone}>Not Done</button>  <button className="col-3 remove-btn" onClick={this.completeRemove}>remove</button></div>
+            return <div className="row" key={index}><p className="col-6 text-left done">{index+1}: {todo}</p><button className="col-3 remove-btn" onClick={this.notDone}>Not Done</button>  <button className="col-3 remove-btn" onClick={this.completeRemove}>remove</button></div>
             })
         return (
             <div>
