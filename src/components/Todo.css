@@ -1,0 +1,9 @@
+.remove-btn{
+    font-size: 15px;
+    border-radius: 50%;
+    width: 30%;
+  }
+  
+  .done{
+    text-decoration: line-through;
+  }
