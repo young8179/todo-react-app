@@ -9,7 +9,7 @@ export default class Todo extends Component {
         super()
         this.state={
             todo: "",
-            task: ["todo1", "todo2", "todo3"],
+            task: [],
             completeTask: []
         }
     }
@@ -26,11 +26,11 @@ export default class Todo extends Component {
 
     //input todo handling
     handleChange = (event)=>{
-        this.setState({[event.target.name]: event.target.value})
+        this.setState({todo: event.target.value})
     }
 
     //remove event 
-    remove = (event)=>{
+    remove = (event)=>{ //we already have index from map. so we can use it
         const taskArray = this.state.task
         const todoIndex = taskArray.indexOf(event.target.value)
         taskArray.splice(todoIndex, 1)
@@ -79,10 +79,10 @@ export default class Todo extends Component {
     }
     render() {
         const todoJSX = this.state.task.map((todo, index)=>{
-        return <div className="row" key={index}><p className="col-8 mr-4 text-left">{index+1}: {todo}</p><button className="col-2 remove-btn todo-button" onClick={this.done}>Done</button>  <button className="col-1 ml-1 remove-btn todo-button" onClick={this.remove}>x</button></div>
+        return <div className="row" key={index}><p className="col-9 mr-4 text-left">{index+1}: {todo}</p><button className="col-1 remove-btn todo-button" onClick={this.done}>√</button>  <button className="col-1 ml-1 remove-btn todo-button" onClick={this.remove}>x</button></div>
         })
         const completeJSX = this.state.completeTask.map((todo, index)=>{
-            return <div className="row" key={index}><p className="col-7 mr-4 text-left done">{index+1}: {todo}</p><button className="col-3 remove-btn todo-button" onClick={this.notDone}>Not Done</button>  <button className="col-1 ml-1 remove-btn todo-button" onClick={this.completeRemove}>x</button></div>
+            return <div className="row" key={index}><p className="col-9 mr-4 text-left done">{index+1}: {todo}</p><button className="col-1 remove-btn todo-button" onClick={this.notDone}>^</button>  <button className="col-1 ml-1 remove-btn todo-button" onClick={this.completeRemove}>x</button></div>
             })
         return (
             <div>
@@ -99,7 +99,7 @@ export default class Todo extends Component {
                             {todoJSX}
                         </div>
                         <div className="container">
-                            <h4>Complete Task</h4>
+                            <h4>Completed Task</h4>
                             {completeJSX}
                         </div>
                             
