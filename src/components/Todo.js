@@ -79,10 +79,10 @@ export default class Todo extends Component {
     }
     render() {
         const todoJSX = this.state.task.map((todo, index)=>{
-        return <div className="row" key={index}><p className="col-6 text-left">{index+1}: {todo}</p><button className="col-3 remove-btn" onClick={this.done}>Done</button>  <button className="col-3 remove-btn" onClick={this.remove}>remove</button></div>
+        return <div className="row" key={index}><p className="col-8 mr-4 text-left">{index+1}: {todo}</p><button className="col-2 remove-btn todo-button" onClick={this.done}>Done</button>  <button className="col-1 ml-1 remove-btn todo-button" onClick={this.remove}>x</button></div>
         })
         const completeJSX = this.state.completeTask.map((todo, index)=>{
-            return <div className="row" key={index}><p className="col-6 text-left done">{index+1}: {todo}</p><button className="col-3 remove-btn" onClick={this.notDone}>Not Done</button>  <button className="col-3 remove-btn" onClick={this.completeRemove}>remove</button></div>
+            return <div className="row" key={index}><p className="col-7 mr-4 text-left done">{index+1}: {todo}</p><button className="col-3 remove-btn todo-button" onClick={this.notDone}>Not Done</button>  <button className="col-1 ml-1 remove-btn todo-button" onClick={this.completeRemove}>x</button></div>
             })
         return (
             <div>
@@ -94,12 +94,12 @@ export default class Todo extends Component {
                             <input type="text" name="todo" onChange={this.handleChange} className="new-todo-text js-input" value={this.state.todo}/>
                             <button className="todo-button add" type="submit">Add</button>
                         </form>
-                        <h3>Todo List</h3>
+                        <h4 className="mt-4">Todo List</h4>
                         <div className="container">
                             {todoJSX}
                         </div>
                         <div className="container">
-                            <h3>Complete Task</h3>
+                            <h4>Complete Task</h4>
                             {completeJSX}
                         </div>
                             
